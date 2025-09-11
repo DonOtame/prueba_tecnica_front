@@ -1,7 +1,7 @@
 @if (postItem()) {
 
 <div
-  class="max-w-2xl mx-auto bg-white dark:bg-gray-800 shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 p-6"
+  class="max-w-2xl mx-auto bg-white dark:bg-gray-800 shadow-md rounded-xl overflow-hidden hover:shadow-lg p-3 md:p-6 mb-2"
 >
   @if (isEditing()) {
   <post-form [postItem]="postItem()" (editClosed)="isEditing.set(false)" />
@@ -36,7 +36,7 @@
 
   <div class="border-t border-gray-200 dark:border-gray-700 pt-2">
     <button
-      class="text-gray-600 dark:text-gray-300 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 w-full text-left"
+      class="text-gray-600 dark:text-gray-300 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 w-full text-left"
       (click)="commentsOpen.set(!commentsOpen())"
     >
       {{ comments().length }} {{ 'postItem.comments' | translate

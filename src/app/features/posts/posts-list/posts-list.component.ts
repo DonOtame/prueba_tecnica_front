@@ -27,10 +27,9 @@ export default class PostsListComponent implements OnInit {
   }
 
   public async logout(): Promise<void> {
-    const result = await handleAsync(this.authFacade.logout(), this.toast, 'TOAST.LOGOUT_ERROR');
-    if (result !== undefined) {
-      this.toast.show('TOAST.LOGOUT_SUCCESS', 'success');
-      this.router.navigate(['/login']);
-    }
+    await handleAsync(this.authFacade.logout(), this.toast, 'TOAST.LOGOUT_ERROR');
+
+    this.toast.show('TOAST.LOGOUT_SUCCESS', 'success');
+    this.router.navigate(['/login']);
   }
 }
