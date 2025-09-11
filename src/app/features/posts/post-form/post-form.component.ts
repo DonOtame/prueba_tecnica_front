@@ -33,8 +33,8 @@ export class PostFormComponent implements OnInit {
   public isLoading = signal<boolean>(false);
 
   postForm = new FormGroup({
-    title: new FormControl('', Validators.required),
-    content: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    content: new FormControl('', [Validators.required, Validators.minLength(1)]),
   });
 
   ngOnInit() {
