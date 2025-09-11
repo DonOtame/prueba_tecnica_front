@@ -8,7 +8,7 @@ import {
   computed,
 } from '@angular/core';
 import { PostItemData, CommentItem } from '@app/core/models';
-import { ToastService, PostDataService, SwalService } from '@app/core/services';
+import { ToastService, SwalService, PostDataService, AuthFacadeService } from '@app/core/services';
 import { CommentFormComponent } from '@app/features/comments/comment-form/comment-form.component';
 import { CommentListComponent } from '@app/features/comments/comment-list/comment-list.component';
 import { OptionsMenuComponent } from '@app/shared/components/options-menu/options-menu.component';
@@ -32,6 +32,7 @@ export class PostItemComponent implements OnInit {
   private toast = inject(ToastService);
   private swal = inject(SwalService);
   private postData = inject(PostDataService);
+  private authFacade = inject(AuthFacadeService);
 
   public postItem = input.required<PostItemData>();
 
@@ -39,6 +40,9 @@ export class PostItemComponent implements OnInit {
   public isEditing = signal(false);
 
   public comments = computed(() => this.sortComments(this.postItem().comments ?? []));
+  public isAuthor = computed(
+    () => this.authFacade.getUsername() === this.postItem().authorUsername
+  );
 
   public menuOptions = [
     { label: 'postItem.editPost', action: () => this.isEditing.set(true) },

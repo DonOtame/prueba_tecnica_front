@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, computed } from '@angular/core';
 import { CommentItem } from '@app/core/models';
-import { ToastService, PostDataService, SwalService } from '@app/core/services';
+import { ToastService, SwalService, PostDataService, AuthFacadeService } from '@app/core/services';
 import { OptionsMenuComponent } from '@app/shared/components/options-menu/options-menu.component';
 import { handleAsync } from '@app/shared/utils';
 import { CommentFormComponent } from '../comment-form/comment-form.component';
@@ -15,8 +15,8 @@ import { CommentFormComponent } from '../comment-form/comment-form.component';
 export class CommentItemComponent {
   private toast = inject(ToastService);
   private swal = inject(SwalService);
-
   private postData = inject(PostDataService);
+  private authFacade = inject(AuthFacadeService);
 
   public comment = input.required<CommentItem>();
   public postId = input.required<number>();
@@ -29,6 +29,7 @@ export class CommentItemComponent {
 
   public isEditing = computed(() => this.editingCommentId() === this.comment().id);
   public isMenuOpen = computed(() => this.activeMenuCommentId() === this.comment().id);
+  public isAuthor = computed(() => this.authFacade.getUsername() === this.comment().authorUsername);
 
   public menuOptions = [
     {

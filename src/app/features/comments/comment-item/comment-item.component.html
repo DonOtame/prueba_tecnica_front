@@ -23,6 +23,9 @@
         {{ comment().createdAt | date : 'short' }}</span
       >
     </div>
+
+    @if(isAuthor()){
+
     <options-menu
       [options]="menuOptions"
       [open]="isMenuOpen()"
@@ -30,6 +33,7 @@
         isMenuOpen() ? setActiveMenuCommentId()(null) : setActiveMenuCommentId()(comment().id)
       "
     />
+    }
   </div>
 
   }
