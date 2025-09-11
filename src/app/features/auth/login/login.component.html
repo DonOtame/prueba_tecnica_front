@@ -19,7 +19,7 @@
           required
         />
         @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
-        <div class="text-red-500 text-sm mt-1">
+        <div class="text-red-500 text-xs mt-1">
           {{ 'login.username.error' | translate }}
         </div>
         }
@@ -39,7 +39,7 @@
           required
         />
         @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
-        <div class="text-red-500 text-sm mt-1">
+        <div class="text-red-500 text-xs mt-1">
           {{ 'login.password.error' | translate }}
         </div>
         }
