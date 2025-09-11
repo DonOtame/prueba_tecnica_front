@@ -1,0 +1,69 @@
+<section
+  class="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-6 relative"
+>
+  <div
+    class="w-full max-w-md mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 py-10"
+  >
+    <form [formGroup]="loginForm" (ngSubmit)="onLogIn()" class="flex flex-col gap-6 px-8">
+      <div class="flex flex-col">
+        <label for="username" class="text-left font-semibold text-gray-700 dark:text-gray-200 mb-1">
+          {{ 'login.username.label' | translate }}
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          formControlName="username"
+          placeholder="{{ 'login.username.placeholder' | translate }}"
+          class="border border-gray-300 dark:border-gray-600 rounded-xl p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+          required
+        />
+        @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+        <div class="text-red-500 text-sm mt-1">
+          {{ 'login.username.error' | translate }}
+        </div>
+        }
+      </div>
+
+      <div class="flex flex-col">
+        <label for="password" class="text-left font-semibold text-gray-700 dark:text-gray-200 mb-1">
+          {{ 'login.password.label' | translate }}
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          placeholder="{{ 'login.password.placeholder' | translate }}"
+          class="border border-gray-300 dark:border-gray-600 rounded-xl p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+          required
+        />
+        @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+        <div class="text-red-500 text-sm mt-1">
+          {{ 'login.password.error' | translate }}
+        </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="text-lg font-semibold text-white py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        {{ 'login.submit' | translate }}
+      </button>
+
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent my-4"></div>
+
+      <button
+        type="button"
+        routerLink="/register"
+        class="text-lg font-semibold text-white py-3 px-6 rounded-xl bg-green-600 hover:bg-green-500 w-fit mx-auto transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+      >
+        {{ 'login.register' | translate }}
+      </button>
+    </form>
+    @if(isLoading()){
+    <loading-spinner class="flex justify-center mt-4" />
+    }
+  </div>
+</section>
