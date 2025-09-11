@@ -24,12 +24,14 @@
     "password": {
       "label": "Password",
       "placeholder": "Enter your password",
-      "error": "Please enter a valid password"
+      "errorRequired": "Password is required",
+      "errorPattern": "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character"
     },
     "confirmPassword": {
       "label": "Confirm Password",
       "placeholder": "Re-enter your password",
-      "error": "Passwords do not match"
+      "errorRequired": "Password confirmation is required",
+      "errorMismatch": "Passwords do not match"
     },
     "submit": "Register",
     "login": "Already have an account? Log in"

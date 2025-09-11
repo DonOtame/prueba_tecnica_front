@@ -40,8 +40,17 @@ export default class RegisterComponent {
 
   registerForm = new FormGroup(
     {
-      username: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(1),
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$/),
+      ]),
       confirmPassword: new FormControl('', [Validators.required]),
     },
     { validators: passwordMatchValidator }

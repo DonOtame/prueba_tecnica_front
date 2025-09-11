@@ -19,7 +19,7 @@
           required
         />
         @if (registerForm.get('username')?.invalid && registerForm.get('username')?.touched) {
-        <div class="text-red-500 text-sm mt-1">
+        <div class="text-red-500 text-xs mt-1">
           {{ 'register.username.error' | translate }}
         </div>
         }
@@ -39,8 +39,12 @@
           required
         />
         @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
-        <div class="text-red-500 text-sm mt-1">
-          {{ 'register.password.error' | translate }}
+        <div class="text-red-500 text-xs mt-1">
+          @if(registerForm.get('password')?.errors?.['required']){
+          {{ 'register.password.errorRequired' | translate }}
+          } @if(registerForm.get('password')?.errors?.['pattern']){
+          {{ 'register.password.errorPattern' | translate }}
+          }
         </div>
         }
       </div>
@@ -63,8 +67,12 @@
         />
         @if (registerForm.get('confirmPassword')?.invalid &&
         registerForm.get('confirmPassword')?.touched) {
-        <div class="text-red-500 text-sm mt-1">
-          {{ 'register.confirmPassword.error' | translate }}
+        <div class="text-red-500 text-xs mt-1">
+          @if(registerForm.get('confirmPassword')?.errors?.['required']){
+          {{ 'register.confirmPassword.errorRequired' | translate }}
+          } @if(registerForm.errors?.['passwordMismatch']){
+          {{ 'register.confirmPassword.errorMismatch' | translate }}
+          }
         </div>
         }
       </div>

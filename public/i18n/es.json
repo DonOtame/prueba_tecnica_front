@@ -24,12 +24,14 @@
     "password": {
       "label": "Contraseña",
       "placeholder": "Introduce tu contraseña",
-      "error": "Por favor, introduce una contraseña válida"
+      "errorRequired": "La contraseña es obligatoria",
+      "errorPattern": "La contraseña debe tener al menos 8 caracteres e incluir mayúsculas, minúsculas, números y un carácter especial"
     },
     "confirmPassword": {
       "label": "Confirmar contraseña",
       "placeholder": "Vuelve a introducir tu contraseña",
-      "error": "Las contraseñas no coinciden"
+      "errorRequired": "La confirmación de la contraseña es obligatoria",
+      "errorMismatch": "Las contraseñas no coinciden"
     },
     "submit": "Registrarse",
     "login": "¿Ya tienes una cuenta? Inicia sesión"
