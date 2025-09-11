@@ -42,46 +42,21 @@ La aplicación estará disponible en: http://localhost:80
 
 #### Pantalla de Login
 
-<div style="display: flex; justify-content: space-around; gap: 20px; align-items: flex-start;">
+| Modo Claro | Modo Oscuro |
+|------------|-------------|
+| ![Login Light](public/images/login_light.png) | ![Login Dark](public/images/login_dark.png) |
 
-  <div style="text-align: center;">
-    <img src="public/images/login_light.png" alt="Login Light" width="200" style="border: 2px solid #ccc;" />
-    <p>Modo Claro</p>
-  </div>
-
-  <div style="text-align: center;">
-    <img src="public/images/login_dark.png" alt="Login Dark" width="200" style="border: 2px solid #ccc;" />
-    <p>Modo Oscuro</p>
-  </div>
-
-</div>
 
 #### Pantalla de Registro
 
-<div style="display: flex; justify-content: space-around; gap: 20px; align-items: flex-start;">
-  <div style="text-align: center;">
-    <img src="public/images/register_light.png" alt="Login Light" width="200" style="border: 2px solid #ccc;" />
-    <p>Modo Claro</p>
-  </div>
+| Modo Claro | Modo Oscuro |
+|------------|-------------|
+| ![Register Light](public/images/register_light.png) | ![Register Dark](public/images/register_dark.png) |
 
-  <div style="text-align: center;">
-    <img src="public/images/register_dark.png" alt="Login Dark" width="200" style="border: 2px solid #ccc;" />
-    <p>Modo Oscuro</p>
-  </div>
-
-</div>
+---
 
 #### Pantalla de Posts
 
-<div style="display: flex; justify-content: space-around; gap: 20px; align-items: flex-start;">
-  <div style="text-align: center;">
-    <img src="public/images/post_light.png" alt="Login Light" width="200" style="border: 2px solid #ccc;" />
-    <p>Modo Claro</p>
-  </div>
-
-  <div style="text-align: center;">
-    <img src="public/images/post_dark.png" alt="Login Dark" width="200" style="border: 2px solid #ccc;" />
-    <p>Modo Oscuro</p>
-  </div>
-
-</div>
+| Modo Claro | Modo Oscuro |
+|------------|-------------|
+| ![Post Light](public/images/post_light.png) | ![Post Dark](public/images/post_dark.png) |
