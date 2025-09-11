@@ -53,11 +53,13 @@ export class PostItemComponent implements OnInit {
     const confirmed = await this.swal.delete();
     if (!confirmed) return;
 
-    await handleAsync(
+    const result = await handleAsync(
       this.postData.deletePost(this.postItem().id),
       this.toast,
       'TOAST.DELETE_POST_ERROR'
     );
+
+    if (result instanceof Error) return;
 
     this.toast.show('TOAST.DELETE_POST_SUCCESS', 'success');
   }

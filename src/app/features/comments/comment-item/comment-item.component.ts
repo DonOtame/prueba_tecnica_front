@@ -53,11 +53,12 @@ export class CommentItemComponent {
     const confirmed = await this.swal.delete();
     if (!confirmed) return;
 
-    await handleAsync(
+    const result = await handleAsync(
       this.postData.deleteComment(this.postId(), this.comment().id),
       this.toast,
       'TOAST.DELETE_COMMENT_ERROR'
     );
+    if (result instanceof Error) return;
 
     this.toast.show('TOAST.DELETE_COMMENT_SUCCESS', 'success');
   }

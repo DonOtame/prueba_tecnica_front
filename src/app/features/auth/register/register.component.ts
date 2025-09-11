@@ -53,11 +53,16 @@ export default class RegisterComponent {
     const { username, password } = this.registerForm.value;
     this.isLoading.set(true);
 
-    await handleAsync(
+    const result = await handleAsync(
       this.authFacade.register(username!, password!),
       this.toast,
       'TOAST.REGISTER_ERROR'
     );
+
+    if (result instanceof Error) {
+      this.isLoading.set(false);
+      return;
+    }
 
     await wait(300);
     this.toast.show('TOAST.REGISTER_SUCCESS', 'success');

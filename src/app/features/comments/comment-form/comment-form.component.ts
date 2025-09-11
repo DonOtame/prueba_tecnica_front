@@ -52,13 +52,16 @@ export class CommentFormComponent implements OnInit {
     const { content } = this.commentForm.value;
     const comment = this.comment();
 
-    await handleAsync(
+    const result = await handleAsync(
       comment
         ? this.postData.updateComment(this.postId(), comment.id, content!)
         : this.postData.createComment(this.postId(), content!),
       this.toast,
       comment ? 'TOAST.UPDATE_COMMENT_ERROR' : 'TOAST.CREATE_COMMENT_ERROR'
     );
+
+    if (result instanceof Error) return;
+
     this.onSuccess(!!comment);
   }
 

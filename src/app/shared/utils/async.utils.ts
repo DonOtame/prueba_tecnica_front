@@ -5,11 +5,11 @@ export const handleAsync = async <T>(
   promise: Promise<T>,
   toast: ToastService,
   errorMessage: string
-): Promise<T | undefined> => {
+): Promise<T | Error> => {
   try {
     return await promise;
   } catch (error: unknown) {
     handleError(error, toast, errorMessage);
-    return undefined;
+    return new Error('An error occurred');
   }
 };

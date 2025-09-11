@@ -38,7 +38,16 @@ export default class LoginComponent {
     const { username, password } = this.loginForm.value;
     this.isLoading.set(true);
 
-    await handleAsync(this.authFacade.login(username!, password!), this.toast, 'TOAST.LOGIN_ERROR');
+    const result = await handleAsync(
+      this.authFacade.login(username!, password!),
+      this.toast,
+      'TOAST.LOGIN_ERROR'
+    );
+
+    if (result instanceof Error) {
+      this.isLoading.set(false);
+      return;
+    }
 
     await wait(300);
     this.toast.show('TOAST.LOGIN_SUCCESS', 'success');

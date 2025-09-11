@@ -48,13 +48,18 @@ export class PostFormComponent implements OnInit {
     const post = this.postItem();
     this.isLoading.set(true);
 
-    await handleAsync(
+    const result = await handleAsync(
       post
         ? this.postData.updatePost(post.id, title!, content!)
         : this.postData.createPost(title!, content!),
       this.toast,
       post ? 'TOAST.UPDATE_POST_ERROR' : 'TOAST.CREATE_POST_ERROR'
     );
+
+    if (result instanceof Error) {
+      this.isLoading.set(false);
+      return;
+    }
 
     await wait(300);
     this.onSuccess(!!post);
