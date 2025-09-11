@@ -4,6 +4,7 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { AuthFacadeService, ToastService } from '@app/core/services';
 import { LoadingSpinnerComponent } from '@app/shared/components/loading-gif/loading-spinner.component';
+import { PasswordEyeComponent } from '@app/shared/components/password-eye/password-eye.component';
 import { wait, handleError, validateForm, handleAsync } from '@app/shared/utils';
 
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     TranslateModule,
     RouterLink,
+    PasswordEyeComponent,
     LoadingSpinnerComponent,
   ],
   templateUrl: './login.component.html',
@@ -24,6 +26,8 @@ export default class LoginComponent {
   private authFacade = inject(AuthFacadeService);
   private toast = inject(ToastService);
   private router = inject(Router);
+
+  public showPassword = signal<boolean>(false);
 
   public isLoading = signal<boolean>(false);
 

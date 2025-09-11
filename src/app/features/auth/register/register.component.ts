@@ -10,6 +10,7 @@ import {
 import { RouterLink, Router } from '@angular/router';
 import { AuthFacadeService, ToastService } from '@app/core/services';
 import { LoadingSpinnerComponent } from '@app/shared/components/loading-gif/loading-spinner.component';
+import { PasswordEyeComponent } from '@app/shared/components/password-eye/password-eye.component';
 import { validateForm, handleAsync, wait } from '@app/shared/utils';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -26,6 +27,7 @@ const passwordMatchValidator = (control: AbstractControl) => {
     ReactiveFormsModule,
     TranslateModule,
     RouterLink,
+    PasswordEyeComponent,
     LoadingSpinnerComponent,
   ],
   templateUrl: './register.component.html',
@@ -35,6 +37,8 @@ export default class RegisterComponent {
   private authFacade = inject(AuthFacadeService);
   private toast = inject(ToastService);
   private router = inject(Router);
+
+  public showPassword = signal<boolean>(false);
 
   public isLoading = signal<boolean>(false);
 
