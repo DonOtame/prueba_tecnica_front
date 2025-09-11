@@ -1,10 +1,9 @@
 <form class="max-w-2xl mx-auto mt-4">
   <div class="relative flex">
-    <!-- Botón principal del dropdown -->
     <button
       id="languages-button"
       data-dropdown-toggle="dropdown-language"
-      class="shrink-0 z-10 inline-flex items-center py-2 px-3 text-sm font-medium text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+      class="shrink-0 z-10 inline-flex items-center py-2 px-3 text-sm font-medium text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
       type="button"
     >
       <img [src]="currentLang().flag" alt="flag" width="18" height="18" />
@@ -26,10 +25,9 @@
       </svg>
     </button>
 
-    <!-- Dropdown -->
     <div
       id="dropdown-language"
-      class="absolute left-0 z-20 hidden divide-y divide-gray-200 dark:divide-gray-700 rounded-lg shadow-lg bg-white dark:bg-gray-800 w-fit mt-1"
+      class="absolute left-0 z-20 hidden divide-y divide-gray-200 dark:divide-gray-700 rounded-lg shadow-lg bg-white dark:bg-gray-800 w-fit mt-1 transition-colors duration-200"
     >
       <ul class="py-2 text-sm text-gray-800 dark:text-gray-100" aria-labelledby="languages-button">
         @for (languaje of availableLangs(); track $index){

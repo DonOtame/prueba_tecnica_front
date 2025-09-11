@@ -3,6 +3,8 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
