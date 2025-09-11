@@ -1,3 +1,8 @@
 <router-outlet />
-<language-switcher class="absolute top-4 right-4" />
-<ngx-sonner-toaster position="bottom-center" richColors />
+
+<div class="fixed top-4 left-4 flex gap-2 z-50">
+  <language-switcher />
+  <theme-switcher />
+</div>
+
+<ngx-sonner-toaster position="bottom-center" richColors class="z-50" />
