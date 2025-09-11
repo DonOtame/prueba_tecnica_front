@@ -1,0 +1,16 @@
+@if (comments().length >0) {
+
+<div class="mt-4 max-h-[50vh] overflow-y-auto scrollbar-thin">
+  @for (comment of comments(); track comment.id){
+  <comment-item
+    [comment]="comment"
+    [postId]="postId()"
+    [editingCommentId]="editingCommentId()"
+    [setEditingCommentId]="setEditingCommentId"
+    [activeMenuCommentId]="activeMenuCommentId()"
+    [setActiveMenuCommentId]="setActiveMenuCommentId"
+  />
+
+  }
+</div>
+}

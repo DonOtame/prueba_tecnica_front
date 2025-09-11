@@ -1,0 +1,36 @@
+<div
+  class="max-w-2xl mb-2 mx-auto bg-gray-50 dark:bg-gray-800 shadow-sm rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md transition-shadow duration-300"
+>
+  @if (isEditing()) {
+  <comment-form [postId]="postId()" [comment]="comment()" (editClosed)="closeEdit()" />
+  } @else {
+  <div class="flex items-start space-x-3">
+    <img
+      src="images/avatar-placeholder.png"
+      alt="{{ comment().authorUsername }} avatar"
+      class="w-8 h-8 rounded-full flex-shrink-0 bg-white"
+    />
+
+    <div class="flex-1">
+      <span class="font-medium text-gray-700 dark:text-gray-200">
+        {{ comment().authorUsername }}</span
+      >
+
+      <p class="text-gray-700 dark:text-gray-200">
+        {{ comment().content }}
+      </p>
+      <span class="text-xs text-gray-500 dark:text-gray-400">
+        {{ comment().createdAt | date : 'short' }}</span
+      >
+    </div>
+    <options-menu
+      [options]="menuOptions"
+      [open]="isMenuOpen()"
+      (toggle)="
+        isMenuOpen() ? setActiveMenuCommentId()(null) : setActiveMenuCommentId()(comment().id)
+      "
+    />
+  </div>
+
+  }
+</div>

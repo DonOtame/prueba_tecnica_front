@@ -1,0 +1,58 @@
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="mt-3">
+  <div class="flex items-start space-x-2">
+    <div class="flex-1">
+      <textarea
+        formControlName="content"
+        aria-describedby="comment-error comment-count"
+        [maxlength]="maxLength()"
+        placeholder="{{ 'commentForm.placeholder' | translate }}"
+        rows="2"
+        class="w-full p-2 border rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none transition-colors duration-200"
+        [ngClass]="{
+          'border-red-500': (commentForm.get('content')?.value?.length || 0) > maxLength()
+        }"
+      ></textarea>
+
+      @if (commentForm.get('content')?.invalid && commentForm.get('content')?.touched) {
+      <p id="comment-error" class="text-xs text-red-500 mt-1">
+        {{ 'commentForm.error' | translate }}
+      </p>
+      }
+
+      <p
+        id="comment-count"
+        class="text-end text-sm mt-1"
+        [ngClass]="{
+          'text-gray-400 dark:text-gray-300':
+            (commentForm.get('content')?.value?.length || 0) <= 280,
+          'text-yellow-500':
+            (commentForm.get('content')?.value?.length || 0) > 280 &&
+            (commentForm.get('content')?.value?.length || 0) <= 300,
+          'text-red-500': (commentForm.get('content')?.value?.length || 0) > 300
+        }"
+      >
+        {{ commentForm.get('content')?.value?.length || 0 }} / {{ maxLength() }}
+      </p>
+    </div>
+  </div>
+
+  <div class="flex justify-end mt-2 gap-2">
+    @if (comment()) {
+    <button
+      type="button"
+      class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+      (click)="onCancelEdit()"
+    >
+      {{ 'commentForm.cancel' | translate }}
+    </button>
+    }
+
+    <button
+      type="submit"
+      [disabled]="commentForm.invalid"
+      class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors disabled:opacity-50"
+    >
+      {{ 'commentForm.submit' | translate }}
+    </button>
+  </div>
+</form>
