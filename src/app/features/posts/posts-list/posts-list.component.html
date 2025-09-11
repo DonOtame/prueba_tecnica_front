@@ -8,26 +8,19 @@
     </button>
   </header>
 
-  <div class="w-full max-w-2xl mb-8">
+  <div class="w-full max-w-2xl">
     <post-form />
   </div>
-
   @switch (true) { @case (isLoading()) {
-  <div class="flex justify-center mt-8">
-    <loading-spinner />
-  </div>
+  <loading-spinner class="flex justify-center mt-4" />
   } @case (posts().length > 0) {
-  <div class="w-full max-w-2xl mt-4 grid gap-6">
+  <div class="w-full max-w-2xl mt-8 space-y-6">
     @for (post of posts(); track post.id) {
-    <div
-      class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6 hover:shadow-lg transition-shadow duration-300"
-    >
-      <post-item [postItem]="post" />
-    </div>
+    <post-item [postItem]="post" />
     }
   </div>
   } @default {
-  <div class="text-gray-500 dark:text-gray-400 mt-8 text-center">
+  <div class="text-gray-500 dark:text-gray-400 mt-2">
     {{ 'postList.noPosts' | translate }}
   </div>
   } }
