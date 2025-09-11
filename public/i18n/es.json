@@ -1,1 +1,95 @@
-{}
+{
+  "login": {
+    "title": "Iniciar sesión",
+    "username": {
+      "label": "Nombre de usuario",
+      "placeholder": "Introduce tu correo electrónico",
+      "error": "Por favor, introduce una dirección de correo electrónico válida"
+    },
+    "password": {
+      "label": "Contraseña",
+      "placeholder": "Introduce tu contraseña",
+      "error": "Por favor, introduce una contraseña válida"
+    },
+
+    "submit": "Iniciar sesión",
+    "register": "Crea nueva cuenta"
+  },
+  "register": {
+    "username": {
+      "label": "Nombre de usuario",
+      "placeholder": "Introduce tu correo electrónico",
+      "error": "Por favor, introduce una dirección de correo electrónico válida"
+    },
+    "password": {
+      "label": "Contraseña",
+      "placeholder": "Introduce tu contraseña",
+      "error": "Por favor, introduce una contraseña válida"
+    },
+    "confirmPassword": {
+      "label": "Confirmar contraseña",
+      "placeholder": "Vuelve a introducir tu contraseña",
+      "error": "Las contraseñas no coinciden"
+    },
+    "submit": "Registrarse",
+    "login": "¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "postList": {
+    "logout": "Cerrar sesión",
+    "noPosts": "No se encontraron publicaciones."
+  },
+  "postForm": {
+    "editPost": "Editar Publicación",
+    "createPost": "Crear Publicación",
+    "cancel": "Cancelar",
+    "titleField": {
+      "label": "Título",
+      "placeholder": "Introduce el título de la publicación",
+      "error": "El título es obligatorio"
+    },
+    "contentField": {
+      "label": "Contenido",
+      "placeholder": "Escribe el contenido de la publicación",
+      "error": "El contenido es obligatorio"
+    },
+    "submit": "Publicar"
+  },
+  "postItem": {
+    "comments": "comentario",
+    "editPost": "Editar",
+    "deletePost": "Eliminar"
+  },
+  "commentForm": {
+    "placeholder": "Escribe tu comentario...",
+    "cancel": "Cancelar",
+    "submit": "Comentar",
+    "error": "El comentario no puede estar vacío"
+  },
+  "commentItem": {
+    "editComment": "Editar",
+    "deleteComment": "Eliminar"
+  },
+
+  "TOAST": {
+    "FIELDS_REQUIRED": "Por favor completa todos los campos",
+    "LOGIN_SUCCESS": "Inicio de sesión exitoso",
+    "LOGIN_ERROR": "Ocurrió un error al iniciar sesión",
+    "LOGOUT_SUCCESS": "Cierre de sesión exitoso",
+    "LOGOUT_ERROR": "Ocurrió un error al cerrar sesión",
+    "REGISTER_SUCCESS": "Registro exitoso",
+    "REGISTER_ERROR": "Ocurrió un error al registrarte",
+    "POSTS_ERROR": "Ocurrió un error al obtener las publicaciones",
+    "CREATE_POST_SUCCESS": "Publicación creada exitosamente",
+    "CREATE_POST_ERROR": "Ocurrió un error al crear la publicación",
+    "UPDATE_POST_SUCCESS": "Publicación actualizada exitosamente",
+    "UPDATE_POST_ERROR": "Ocurrió un error al actualizar la publicación",
+    "DELETE_POST_SUCCESS": "Publicación eliminada exitosamente",
+    "DELETE_POST_ERROR": "Ocurrió un error al eliminar la publicación",
+    "CREATE_COMMENT_SUCCESS": "Comentario creado exitosamente",
+    "CREATE_COMMENT_ERROR": "Ocurrió un error al crear el comentario",
+    "UPDATE_COMMENT_SUCCESS": "Comentario actualizado exitosamente",
+    "UPDATE_COMMENT_ERROR": "Ocurrió un error al actualizar el comentario",
+    "DELETE_COMMENT_SUCCESS": "Comentario eliminado exitosamente",
+    "DELETE_COMMENT_ERROR": "Ocurrió un error al eliminar el comentario"
+  }
+}
