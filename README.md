@@ -11,7 +11,6 @@ Clona el repositorio del proyecto y navega dentro de la carpeta del mismo:
 ```bash
 git clone https://github.com/DonOtame/prueba_tecnica_front.git
 cd prueba_tecnica_front
-
 ```
 
 ## 2. Ejecutar Backend
