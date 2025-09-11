@@ -6,4 +6,5 @@ export * from './comment.service';
 export * from './language.service';
 export * from './post-data.service';
 export * from './post.service';
+export * from './swal.service';
 export * from './toast.service';

@@ -91,5 +91,11 @@
     "UPDATE_COMMENT_ERROR": "Ocurrió un error al actualizar el comentario",
     "DELETE_COMMENT_SUCCESS": "Comentario eliminado exitosamente",
     "DELETE_COMMENT_ERROR": "Ocurrió un error al eliminar el comentario"
+  },
+  "SWAL": {
+    "CONFIRM_DELETE_TITLE": "¿Estás seguro?",
+    "CONFIRM_DELETE_TEXT": "Esta acción no se puede deshacer.",
+    "CONFIRM_BUTTON_TEXT": "Sí, ¡elimínalo!",
+    "CANCEL_BUTTON_TEXT": "Cancelar"
   }
 }

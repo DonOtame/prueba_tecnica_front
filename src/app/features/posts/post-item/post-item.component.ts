@@ -8,7 +8,7 @@ import {
   computed,
 } from '@angular/core';
 import { PostItemData, CommentItem } from '@app/core/models';
-import { ToastService, PostDataService } from '@app/core/services';
+import { ToastService, PostDataService, SwalService } from '@app/core/services';
 import { CommentFormComponent } from '@app/features/comments/comment-form/comment-form.component';
 import { CommentListComponent } from '@app/features/comments/comment-list/comment-list.component';
 import { OptionsMenuComponent } from '@app/shared/components/options-menu/options-menu.component';
@@ -30,6 +30,7 @@ import { PostFormComponent } from '../post-form/post-form.component';
 })
 export class PostItemComponent implements OnInit {
   private toast = inject(ToastService);
+  private swal = inject(SwalService);
   private postData = inject(PostDataService);
 
   public postItem = input.required<PostItemData>();
@@ -49,6 +50,9 @@ export class PostItemComponent implements OnInit {
   }
 
   private async deletePost(): Promise<void> {
+    const confirmed = await this.swal.delete();
+    if (!confirmed) return;
+
     await handleAsync(
       this.postData.deletePost(this.postItem().id),
       this.toast,

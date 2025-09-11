@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { CommentItem } from '@app/core/models';
-import { ToastService, PostDataService } from '@app/core/services';
+import { ToastService, PostDataService, SwalService } from '@app/core/services';
 import { OptionsMenuComponent } from '@app/shared/components/options-menu/options-menu.component';
 import { handleAsync } from '@app/shared/utils';
 import { CommentFormComponent } from '../comment-form/comment-form.component';
@@ -14,6 +14,8 @@ import { CommentFormComponent } from '../comment-form/comment-form.component';
 })
 export class CommentItemComponent {
   private toast = inject(ToastService);
+  private swal = inject(SwalService);
+
   private postData = inject(PostDataService);
 
   public comment = input.required<CommentItem>();
@@ -48,6 +50,9 @@ export class CommentItemComponent {
   }
 
   private async deleteComment(): Promise<void> {
+    const confirmed = await this.swal.delete();
+    if (!confirmed) return;
+
     await handleAsync(
       this.postData.deleteComment(this.postId(), this.comment().id),
       this.toast,

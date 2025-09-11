@@ -91,5 +91,12 @@
     "UPDATE_COMMENT_ERROR": "An error occurred while updating the comment",
     "DELETE_COMMENT_SUCCESS": "Comment deleted successfully",
     "DELETE_COMMENT_ERROR": "An error occurred while deleting the comment"
+  },
+
+  "SWAL": {
+    "CONFIRM_DELETE_TITLE": "Are you sure?",
+    "CONFIRM_DELETE_TEXT": "This action cannot be undone.",
+    "CONFIRM_BUTTON_TEXT": "Yes, delete it!",
+    "CANCEL_BUTTON_TEXT": "Cancel"
   }
 }
