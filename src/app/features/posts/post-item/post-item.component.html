@@ -1,0 +1,59 @@
+@if (postItem()) {
+
+<div
+  class="max-w-2xl mx-auto bg-white dark:bg-gray-800 shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 p-6"
+>
+  @if (isEditing()) {
+  <post-form [postItem]="postItem()" (editClosed)="isEditing.set(false)" />
+  } @else{
+
+  <div class="flex items-center justify-between mb-2">
+    <div class="flex items-center space-x-3">
+      <img
+        src="images/avatar-placeholder.png"
+        alt="{{ postItem().authorUsername }} avatar"
+        class="w-8 h-8 rounded-full flex-shrink-0 bg-white"
+      />
+      <span class="font-medium text-gray-700 dark:text-gray-200">
+        {{ postItem().authorUsername }}
+      </span>
+    </div>
+
+    <options-menu [options]="menuOptions" />
+  </div>
+
+  <h2
+    class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2 truncate"
+    title="{{ postItem().title }}"
+  >
+    {{ postItem().title }}
+  </h2>
+
+  <p class="text-gray-700 dark:text-gray-300 mb-4 line-clamp-4">
+    {{ postItem().content }}
+  </p>
+  }
+
+  <div class="border-t border-gray-200 dark:border-gray-700 pt-2">
+    <button
+      class="text-gray-600 dark:text-gray-300 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 w-full text-left"
+      (click)="commentsOpen.set(!commentsOpen())"
+    >
+      {{ comments().length }} {{ 'postItem.comments' | translate
+      }}{{ comments().length !== 1 ? 's' : '' }}
+    </button>
+
+    @if (commentsOpen()){
+    <div class="pt-4 mb-4">
+      <comment-form [postId]="postItem().id" />
+    </div>
+
+    @if (comments().length > 0) {
+    <div class="mt-3 space-y-3 max-h-[50vh] border-t border-gray-200 dark:border-gray-700">
+      <comment-list [comments]="comments()" [postId]="postItem().id" />
+    </div>
+    } }
+  </div>
+</div>
+
+}
