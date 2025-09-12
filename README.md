@@ -130,27 +130,6 @@ Los guards garantizan que:
 - Solo los usuarios autenticados puedan acceder a la sección de publicaciones.
 - Los usuarios no autenticados solo puedan acceder a las páginas de login y registro.
 
-## Pantallas de la Aplicación
-
-#### Pantalla de Login
-
-| Modo Claro                                    | Modo Oscuro                                 |
-| --------------------------------------------- | ------------------------------------------- |
-| ![Login Light](public/images/login_light.png) | ![Login Dark](public/images/login_dark.png) |
-
-#### Pantalla de Registro
-
-| Modo Claro                                          | Modo Oscuro                                       |
-| --------------------------------------------------- | ------------------------------------------------- |
-| ![Register Light](public/images/register_light.png) | ![Register Dark](public/images/register_dark.png) |
-
----
-
-#### Pantalla de Posts
-
-| Modo Claro                                  | Modo Oscuro                               |
-| ------------------------------------------- | ----------------------------------------- |
-| ![Post Light](public/images/post_light.png) | ![Post Dark](public/images/post_dark.png) |
 
 ## Pantallas de la Aplicación
 
