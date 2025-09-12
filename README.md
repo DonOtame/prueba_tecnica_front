@@ -41,7 +41,7 @@ La aplicación estará disponible en: http://localhost:80
 - Asegúrate de que los puertos `8080` y `80` no estén ocupados por otras aplicaciones.
 - Si se ejecuta `docker-compose up` por primera vez, puede tardar unos minutos en descargar las imágenes necesarias.
 
-## Estructura del proyecto
+## Estructura del Proyecto
 
 ### Tecnologías y Dependencias Principales
 
@@ -52,8 +52,6 @@ La aplicación estará disponible en: http://localhost:80
 - **NGX-Cookie-Service**: Manejo sencillo de cookies en Angular.
 - **NGX-Sonner**: Notificaciones tipo toast para mejorar la experiencia de usuario.
 - **SweetAlert2**: Diálogos de confirmación y alertas personalizadas.
-
-## Estructura del Proyecto
 
 La estructura del proyecto está organizada para facilitar la escalabilidad, el mantenimiento y la reutilización de componentes. A continuación se describe la disposición de carpetas y su propósito principal:
 
@@ -129,7 +127,6 @@ Los guards garantizan que:
 
 - Solo los usuarios autenticados puedan acceder a la sección de publicaciones.
 - Los usuarios no autenticados solo puedan acceder a las páginas de login y registro.
-
 
 ## Pantallas de la Aplicación
 
