@@ -7,7 +7,6 @@ import { PostFormComponent } from '../post-form/post-form.component';
 import { PostItemComponent } from '../post-item/post-item.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorResponse } from '@app/core/models';
-import { comment } from 'postcss';
 
 @Component({
   selector: 'app-posts-list',
@@ -39,7 +38,7 @@ export default class PostsListComponent implements OnInit {
       // 'TOAST.LOGOUT_ERROR'
     );
 
-    if ((result as ErrorResponse).status) {
+    if ((result as ErrorResponse)?.status) {
       handleError(result as ErrorResponse, this.toast, 'LOGOUT');
       return;
     }

@@ -7,7 +7,6 @@ import { AuthFacadeService, ToastService } from '@app/core/services';
 import { LoadingSpinnerComponent } from '@app/shared/components/loading-gif/loading-spinner.component';
 import { PasswordEyeComponent } from '@app/shared/components/password-eye/password-eye.component';
 import { wait, validateForm, handleAsync, handleError } from '@app/shared/utils';
-
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -49,7 +48,7 @@ export default class LoginComponent {
       // 'TOAST.LOGIN_ERROR'
     );
 
-    if ((result as ErrorResponse).status) {
+    if ((result as ErrorResponse)?.status) {
       this.isLoading.set(false);
       handleError(result as ErrorResponse, this.toast, 'LOGIN');
       return;

@@ -73,7 +73,7 @@ export default class RegisterComponent {
       // 'TOAST.REGISTER_ERROR'
     );
 
-    if ((result as ErrorResponse).status) {
+    if ((result as ErrorResponse)?.status) {
       this.isLoading.set(false);
       handleError(result as ErrorResponse, this.toast, 'REGISTER');
       return;

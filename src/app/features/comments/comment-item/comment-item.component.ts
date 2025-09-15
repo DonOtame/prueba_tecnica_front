@@ -59,7 +59,7 @@ export class CommentItemComponent {
       // this.toast,
       // 'TOAST.DELETE_COMMENT_ERROR'
     );
-    if ((result as ErrorResponse).status) {
+    if ((result as ErrorResponse)?.status) {
       handleError(result as ErrorResponse, this.toast, 'DELETE_COMMENT');
       return;
     }

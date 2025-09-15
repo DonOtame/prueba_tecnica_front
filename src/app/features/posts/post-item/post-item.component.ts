@@ -15,7 +15,6 @@ import { OptionsMenuComponent } from '@app/shared/components/options-menu/option
 import { handleAsync, handleError } from '@app/shared/utils';
 import { TranslateModule } from '@ngx-translate/core';
 import { PostFormComponent } from '../post-form/post-form.component';
-import { comment } from 'postcss';
 
 @Component({
   selector: 'post-item',
@@ -68,7 +67,7 @@ export class PostItemComponent implements OnInit {
       // 'TOAST.DELETE_POST_ERROR'
     );
 
-    if ((result as ErrorResponse).status) {
+    if ((result as ErrorResponse)?.status) {
       handleError(result as ErrorResponse, this.toast, 'DELETE_POST');
       return;
     }

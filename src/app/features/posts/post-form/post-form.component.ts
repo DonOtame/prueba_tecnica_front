@@ -13,7 +13,6 @@ import { PostDataService, ToastService } from '@app/core/services';
 import { LoadingSpinnerComponent } from '@app/shared/components/loading-gif/loading-spinner.component';
 import { validateForm, handleAsync, wait, handleError } from '@app/shared/utils';
 import { TranslateModule } from '@ngx-translate/core';
-import { comment } from 'postcss';
 
 @Component({
   selector: 'post-form',
@@ -57,7 +56,7 @@ export class PostFormComponent implements OnInit {
       // post ? 'TOAST.UPDATE_POST_ERROR' : 'TOAST.CREATE_POST_ERROR'
     );
 
-    if ((result as ErrorResponse).status) {
+    if ((result as ErrorResponse)?.status) {
       this.isLoading.set(false);
       handleError(result as ErrorResponse, this.toast, post ? 'UPDATE_POST' : 'CREATE_POST');
       return;
