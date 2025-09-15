@@ -17,17 +17,7 @@ git clone https://github.com/DonOtame/prueba_tecnica_front.git
 cd prueba_tecnica_front
 ```
 
-### 2. Ejecutar Backend
-
-Asegúrate de tener Java instalado en tu máquina.
-
-```bash
-java -jar prueba.jar
-```
-
-La aplicación estará disponible en: http://localhost:8080
-
-### 3. Ejecutar Frontend con Docker
+### 2. Ejecutar Frontend y Backend con Docker
 
 ```bash
 docker-compose up
