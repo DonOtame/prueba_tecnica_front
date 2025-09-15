@@ -1,9 +1,15 @@
 version: '3.8'
 services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - '8080:8080'
+
   angular-app:
     build: .
     ports:
-      - "80:80"
+      - '80:80'
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - 'host.docker.internal:host-gateway'
     restart: unless-stopped
