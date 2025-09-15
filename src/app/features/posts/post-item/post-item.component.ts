@@ -7,14 +7,15 @@ import {
   signal,
   computed,
 } from '@angular/core';
-import { PostItemData, CommentItem } from '@app/core/models';
+import { PostItemData, CommentItem, ErrorResponse } from '@app/core/models';
 import { ToastService, SwalService, PostDataService, AuthFacadeService } from '@app/core/services';
 import { CommentFormComponent } from '@app/features/comments/comment-form/comment-form.component';
 import { CommentListComponent } from '@app/features/comments/comment-list/comment-list.component';
 import { OptionsMenuComponent } from '@app/shared/components/options-menu/options-menu.component';
-import { handleAsync } from '@app/shared/utils';
+import { handleAsync, handleError } from '@app/shared/utils';
 import { TranslateModule } from '@ngx-translate/core';
 import { PostFormComponent } from '../post-form/post-form.component';
+import { comment } from 'postcss';
 
 @Component({
   selector: 'post-item',
@@ -50,7 +51,11 @@ export class PostItemComponent implements OnInit {
   ];
 
   ngOnInit() {
-    handleAsync(this.postData.getPostById(this.postItem().id), this.toast, 'TOAST.POST_ERROR');
+    handleAsync(
+      this.postData.getPostById(this.postItem().id)
+      //  this.toast,
+      //  'TOAST.POST_ERROR'
+    );
   }
 
   private async deletePost(): Promise<void> {
@@ -58,12 +63,15 @@ export class PostItemComponent implements OnInit {
     if (!confirmed) return;
 
     const result = await handleAsync(
-      this.postData.deletePost(this.postItem().id),
-      this.toast,
-      'TOAST.DELETE_POST_ERROR'
+      this.postData.deletePost(this.postItem().id)
+      // this.toast,
+      // 'TOAST.DELETE_POST_ERROR'
     );
 
-    if (result instanceof Error) return;
+    if ((result as ErrorResponse).status) {
+      handleError(result as ErrorResponse, this.toast, 'DELETE_POST');
+      return;
+    }
 
     this.toast.show('TOAST.DELETE_POST_SUCCESS', 'success');
   }

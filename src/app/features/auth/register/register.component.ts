@@ -8,10 +8,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
+import { ErrorResponse } from '@app/core/models';
 import { AuthFacadeService, ToastService } from '@app/core/services';
 import { LoadingSpinnerComponent } from '@app/shared/components/loading-gif/loading-spinner.component';
 import { PasswordEyeComponent } from '@app/shared/components/password-eye/password-eye.component';
-import { validateForm, handleAsync, wait } from '@app/shared/utils';
+import { validateForm, handleAsync, wait, handleError } from '@app/shared/utils';
 import { TranslateModule } from '@ngx-translate/core';
 
 const passwordMatchValidator = (control: AbstractControl) => {
@@ -67,13 +68,14 @@ export default class RegisterComponent {
     this.isLoading.set(true);
 
     const result = await handleAsync(
-      this.authFacade.register(username!, password!),
-      this.toast,
-      'TOAST.REGISTER_ERROR'
+      this.authFacade.register(username!, password!)
+      // this.toast,
+      // 'TOAST.REGISTER_ERROR'
     );
 
-    if (result instanceof Error) {
+    if ((result as ErrorResponse).status) {
       this.isLoading.set(false);
+      handleError(result as ErrorResponse, this.toast, 'REGISTER');
       return;
     }
 

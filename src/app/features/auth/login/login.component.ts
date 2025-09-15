@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ErrorResponse } from '@app/core/models';
 import { AuthFacadeService, ToastService } from '@app/core/services';
 import { LoadingSpinnerComponent } from '@app/shared/components/loading-gif/loading-spinner.component';
 import { PasswordEyeComponent } from '@app/shared/components/password-eye/password-eye.component';
-import { wait, handleError, validateForm, handleAsync } from '@app/shared/utils';
+import { wait, validateForm, handleAsync, handleError } from '@app/shared/utils';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -43,13 +44,14 @@ export default class LoginComponent {
     this.isLoading.set(true);
 
     const result = await handleAsync(
-      this.authFacade.login(username!, password!),
-      this.toast,
-      'TOAST.LOGIN_ERROR'
+      this.authFacade.login(username!, password!)
+      // this.toast,
+      // 'TOAST.LOGIN_ERROR'
     );
 
-    if (result instanceof Error) {
+    if ((result as ErrorResponse).status) {
       this.isLoading.set(false);
+      handleError(result as ErrorResponse, this.toast, 'LOGIN');
       return;
     }
 

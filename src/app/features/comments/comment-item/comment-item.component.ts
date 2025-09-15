@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, inject, input, computed } from '@angular/core';
-import { CommentItem } from '@app/core/models';
+import { CommentItem, ErrorResponse } from '@app/core/models';
 import { ToastService, SwalService, PostDataService, AuthFacadeService } from '@app/core/services';
 import { OptionsMenuComponent } from '@app/shared/components/options-menu/options-menu.component';
-import { handleAsync } from '@app/shared/utils';
+import { handleAsync, handleError } from '@app/shared/utils';
 import { CommentFormComponent } from '../comment-form/comment-form.component';
 
 @Component({
@@ -55,11 +55,14 @@ export class CommentItemComponent {
     if (!confirmed) return;
 
     const result = await handleAsync(
-      this.postData.deleteComment(this.postId(), this.comment().id),
-      this.toast,
-      'TOAST.DELETE_COMMENT_ERROR'
+      this.postData.deleteComment(this.postId(), this.comment().id)
+      // this.toast,
+      // 'TOAST.DELETE_COMMENT_ERROR'
     );
-    if (result instanceof Error) return;
+    if ((result as ErrorResponse).status) {
+      handleError(result as ErrorResponse, this.toast, 'DELETE_COMMENT');
+      return;
+    }
 
     this.toast.show('TOAST.DELETE_COMMENT_SUCCESS', 'success');
   }

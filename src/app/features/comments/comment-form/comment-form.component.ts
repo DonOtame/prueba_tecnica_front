@@ -9,9 +9,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { CommentItem } from '@app/core/models';
+import { CommentItem, ErrorResponse } from '@app/core/models';
 import { PostDataService, ToastService } from '@app/core/services';
-import { validateForm, handleAsync } from '@app/shared/utils';
+import { validateForm, handleAsync, handleError } from '@app/shared/utils';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -55,13 +55,19 @@ export class CommentFormComponent implements OnInit {
     const result = await handleAsync(
       comment
         ? this.postData.updateComment(this.postId(), comment.id, content!)
-        : this.postData.createComment(this.postId(), content!),
-      this.toast,
-      comment ? 'TOAST.UPDATE_COMMENT_ERROR' : 'TOAST.CREATE_COMMENT_ERROR'
+        : this.postData.createComment(this.postId(), content!)
+      // this.toast,
+      // comment ? 'TOAST.UPDATE_COMMENT_ERROR' : 'TOAST.CREATE_COMMENT_ERROR'
     );
 
-    if (result instanceof Error) return;
-
+    if ((result as ErrorResponse).status) {
+      handleError(
+        result as ErrorResponse,
+        this.toast,
+        comment ? 'UPDATE_COMMENT' : 'CREATE_COMMENT'
+      );
+      return;
+    }
     this.onSuccess(!!comment);
   }
 
